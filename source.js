@@ -1,5 +1,10 @@
-function compWin(){alert("Good job, a computer beat you")}
-function userWin(){alert("*Slow Clap*")}
+function compWin(){alert(`Good job, a computer beat you ${computerScore} out of 5 times`)}
+function userWin(){alert(`*Slow Clap*, you have won ${userScore} out of 5 times`)}
+let computerScore = 0
+let userScore = 0
+
+
+for (let i = 0; i < 5; i++) {
 
 let computerChoice = computerPlay()
 let userChoice = userPlay()
@@ -9,17 +14,17 @@ function computerPlay(){
     let randomNumber = Math.round(Math.random()*(100))
     switch(true){
         case (randomNumber <= 33):
-        console.log("rock "+randomNumber);
+        console.log(`rock ${randomNumber}`);
         return "rock";
         break;
 
         case (randomNumber > 33 && randomNumber <= 66):
-        console.log("paper ")+randomNumber;
+        console.log(`paper ${randomNumber}`);
         return "paper";
         break;
 
         case (randomNumber > 66):
-        console.log("scissors "+randomNumber);
+        console.log(`scissors ${randomNumber}`);
         return "scissors";
         break;
 
@@ -60,18 +65,24 @@ function userPlay(){
 function gameOn(){
     switch(true){
         case (computerChoice == "rock" && userChoice == "scissors"):
-        return compWin();
+        ++computerScore
+        return compWin(computerScore);
         break;
 
         case (computerChoice == "paper" && userChoice == "rock"):
-        return compWin();
+        ++computerScore
+        return compWin(computerScore);
         break;
 
         case (computerChoice == "scissors") && userChoice == "paper":
-        return compWin();
+        ++computerScore
+        return compWin(computerScore);
         break;
 
         default:
-        userWin();
+        ++userScore
+        userWin(userScore);
     }
+}
+
 }
