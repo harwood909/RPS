@@ -1,4 +1,4 @@
-function compWin(i){alert(`Round ${i+1}\nGood job, a computer beat you ${computerScore} out of 5 times\nYour current score is ${userScore} out of 5 times`)}
+function compWin(i){alert(`Round ${i+1}\nA computer beat you ${computerScore} out of 5 times\nYou have won ${userScore} out of 5 times`)}
 function userWin(i){alert(`Round ${i+1}\n*Slow Clap*, you have won ${userScore} out of 5 times\nThe computer has won ${computerScore} out of 5 times`)}
 let computerScore = 0
 let userScore = 0
@@ -78,6 +78,11 @@ function gameOn(){
         ++computerScore
         return compWin(i);
         break;
+
+        case (computerChoice == userChoice):
+        alert(`Draw, try again`);
+        --i
+        return;
 
         default:
         ++userScore
