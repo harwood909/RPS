@@ -1,5 +1,5 @@
-function compWin(){alert(`Good job, a computer beat you ${computerScore} out of 5 times`)}
-function userWin(){alert(`*Slow Clap*, you have won ${userScore} out of 5 times`)}
+function compWin(i){alert(`Round ${i+1}\nGood job, a computer beat you ${computerScore} out of 5 times\nYour current score is ${userScore} out of 5 times`)}
+function userWin(i){alert(`Round ${i+1}\n*Slow Clap*, you have won ${userScore} out of 5 times\nThe computer has won ${computerScore} out of 5 times`)}
 let computerScore = 0
 let userScore = 0
 
@@ -66,23 +66,23 @@ function gameOn(){
     switch(true){
         case (computerChoice == "rock" && userChoice == "scissors"):
         ++computerScore
-        return compWin(computerScore);
+        return compWin(i);
         break;
 
         case (computerChoice == "paper" && userChoice == "rock"):
         ++computerScore
-        return compWin(computerScore);
+        return compWin(i);
         break;
 
         case (computerChoice == "scissors") && userChoice == "paper":
         ++computerScore
-        return compWin(computerScore);
+        return compWin(i);
         break;
 
         default:
         ++userScore
-        userWin(userScore);
+        return userWin(i);
     }
 }
-
 }
+alert(`Refresh the page to play another round`);
