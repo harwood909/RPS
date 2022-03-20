@@ -1,7 +1,10 @@
 function compWin(){alert("Good job, a computer beat you")}
 function userWin(){alert("*Slow Clap*")}
 
-computerPlay()
+let computerChoice = computerPlay()
+let userChoice = userPlay()
+let result = gameOn(computerChoice,userChoice);
+
 function computerPlay(){
     let randomNumber = Math.round(Math.random()*(100))
     switch(true){
@@ -25,27 +28,27 @@ function computerPlay(){
 
     }
 }
-userPlay()
+
 function userPlay(){
-    while (typeof(userChoice) != "string"){
-        let userChoice = prompt("Pick your weapon: Rock, Paper or Scissors", "Rock");
-        if (userChoice != null){
-            userChoice = userChoice.toLowerCase();
+    while (typeof(userInput) != "string"){
+        let userInput = prompt("Pick your weapon: Rock, Paper or Scissors", "Rock");
+        if (userInput != null){
+            userInput = userInput.toLowerCase();
         }
         switch (true){
-            case (userChoice == "rock"):
-        console.log(userChoice);
-        return userChoice;
+            case (userInput == "rock"):
+        console.log(userInput);
+        return userInput;
         break;
 
-        case (userChoice == "paper"):
-            console.log(userChoice);
-            return userChoice;
+        case (userInput == "paper"):
+            console.log(userInput);
+            return userInput;
             break;
             
-            case (userChoice == "scissors"):
-                console.log(userChoice);
-        return userChoice;
+            case (userInput == "scissors"):
+                console.log(userInput);
+        return userInput;
         break;
         
         default:
@@ -53,21 +56,19 @@ function userPlay(){
         }
     }
 }
-gameOn();
-function gameOn(computerPlay,userChoice){
-    console.log(computerPlay);
-    console.log(userChoice);
+
+function gameOn(){
     switch(true){
-        case (computerPlay == "rock" && userChoice == "scissors"):
-        compWin();
+        case (computerChoice == "rock" && userChoice == "scissors"):
+        return compWin();
         break;
 
-        case (computerPlay == "paper" && userChoice == "rock"):
-        compWin();
+        case (computerChoice == "paper" && userChoice == "rock"):
+        return compWin();
         break;
 
-        case (computerPlay == "scissors") && userChoice == "paper":
-        compWin();
+        case (computerChoice == "scissors") && userChoice == "paper":
+        return compWin();
         break;
 
         default:
