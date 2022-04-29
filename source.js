@@ -1,14 +1,17 @@
-function compWin(i){alert(`Round ${i+1}\nA computer beat you ${computerScore} out of 5 times\nYou have won ${userScore} out of 5 times`)}
+function compWin(i){alert(`Round ${i+1}A computer beat you ${computerScore} out of 5 times\nYou have won ${userScore} out of 5 times`)}
 function userWin(i){alert(`Round ${i+1}\n*Slow Clap*, you have won ${userScore} out of 5 times\nThe computer has won ${computerScore} out of 5 times`)}
 let computerScore = 0
 let userScore = 0
+for(i=0;i<5;i++){
 
-
-for (let i = 0; i < 5; i++) {
+const btn = document.querySelector(`div.buttons`)
+btn.addEventListener(`click`, function(e){
+    let userChoice = (e.target.className);
+    gameOn(computerPlay,userChoice);
+});
+}
 
 let computerChoice = computerPlay()
-let userChoice = userPlay()
-let result = gameOn(computerChoice,userChoice);
 
 function computerPlay(){
     let randomNumber = Math.round(Math.random()*(100))
@@ -34,35 +37,7 @@ function computerPlay(){
     }
 }
 
-function userPlay(){
-    while (typeof(userInput) != "string"){
-        let userInput = prompt("Pick your weapon: Rock, Paper or Scissors", "Rock");
-        if (userInput != null){
-            userInput = userInput.toLowerCase();
-        }
-        switch (true){
-            case (userInput == "rock"):
-        console.log(userInput);
-        return userInput;
-        break;
-
-        case (userInput == "paper"):
-            console.log(userInput);
-            return userInput;
-            break;
-            
-            case (userInput == "scissors"):
-                console.log(userInput);
-        return userInput;
-        break;
-        
-        default:
-            console.log("Good job, you broke it")
-        }
-    }
-}
-
-function gameOn(){
+function gameOn(computerChoice,userChoice){
     switch(true){
         case (computerChoice == "rock" && userChoice == "scissors"):
         ++computerScore
@@ -89,5 +64,4 @@ function gameOn(){
         return userWin(i);
     }
 }
-}
-alert(`Refresh the page to play another round`);
+//alert(`Refresh the page to play another round`);
