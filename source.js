@@ -20,11 +20,13 @@ function runMatch(e){
     else{
         finalScore();
     }
-const userScoreElement = document.querySelector(`#scoreboard>.user>.score`)
-const userScoreData = document.createElement(`div`)
+const userScoreElement = document.querySelector(`.user-score`)
 console.log(userScoreElement)
-userScoreData.textContent = userScore
-//userScoreElement.appendChild(userScoreData)
+userScoreElement.textContent = userScore
+const computerScoreElement = document.querySelector(`.computer-score`)
+console.log(computerScoreElement)
+computerScoreElement.textContent = computerScore
+
 }
 function finalScore(){
     if(computerScore<userScore)
