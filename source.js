@@ -13,7 +13,9 @@ function runMatch(e){
     if(roundCount<roundLimit){
         let userChoice = (e.target.className);
         gameOn(computerPlay(),userChoice);
-        console.log(roundCount)
+        if(roundCount===roundLimit){
+            finalScore();    
+        }
     }
     else{
         finalScore();
@@ -21,9 +23,9 @@ function runMatch(e){
 }
 function finalScore(){
     if(computerScore<userScore)
-    alert(`You won\n*Slow Clap*, you have won ${userScore} out of ${roundLimit} times\nThe computer has won ${computerScore} out of ${roundLimit} times\nRefresh the page to play another match`)
+        alert(`You won\n*Slow Clap*, you have won ${userScore} out of ${roundLimit} times\nThe computer has won ${computerScore} out of ${roundLimit} times\nRefresh the page to play another match`)
     else{
-    alert(`You lost\nA computer beat you ${computerScore} out of ${roundLimit} times\nYou have won ${userScore} out of ${roundLimit} times\nRefresh the page to play another match`)
+        alert(`You lost\nA computer beat you ${computerScore} out of ${roundLimit} times\nYou have won ${userScore} out of ${roundLimit} times\nRefresh the page to play another match`)
 
     }
 }
