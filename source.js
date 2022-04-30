@@ -1,17 +1,32 @@
-function compWin(i){alert(`Round ${i+1}A computer beat you ${computerScore} out of 5 times\nYou have won ${userScore} out of 5 times`)}
-function userWin(i){alert(`Round ${i+1}\n*Slow Clap*, you have won ${userScore} out of 5 times\nThe computer has won ${computerScore} out of 5 times`)}
-let computerScore = 0
-let userScore = 0
-for(i=0;i<5;i++){
+function userWin(){alert(`Round ${roundCount}\n*Slow Clap*, you have won ${userScore} out of ${roundLimit} times\nThe computer has won ${computerScore} out of ${roundLimit} times`)}
+function compWin(){alert(`Round ${roundCount}\nA computer beat you ${computerScore} out of ${roundLimit} times\nYou have won ${userScore} out of ${roundLimit} times`)}
+
+let roundCount = 0;
+const roundLimit = 5;
+let computerScore = 0;
+let userScore = 0;
 
 const btn = document.querySelector(`div.buttons`)
-btn.addEventListener(`click`, function(e){
-    let userChoice = (e.target.className);
-    gameOn(computerPlay,userChoice);
-});
-}
+btn.addEventListener(`click`,(e)=>runMatch(e));
 
-let computerChoice = computerPlay()
+function runMatch(e){
+    if(roundCount<roundLimit){
+        let userChoice = (e.target.className);
+        gameOn(computerPlay(),userChoice);
+        console.log(roundCount)
+    }
+    else{
+        finalScore();
+    }
+}
+function finalScore(){
+    if(computerScore<userScore)
+    alert(`You won\n*Slow Clap*, you have won ${userScore} out of ${roundLimit} times\nThe computer has won ${computerScore} out of ${roundLimit} times\nRefresh the page to play another match`)
+    else{
+    alert(`You lost\nA computer beat you ${computerScore} out of ${roundLimit} times\nYou have won ${userScore} out of ${roundLimit} times\nRefresh the page to play another match`)
+
+    }
+}
 
 function computerPlay(){
     let randomNumber = Math.round(Math.random()*(100))
@@ -41,27 +56,29 @@ function gameOn(computerChoice,userChoice){
     switch(true){
         case (computerChoice == "rock" && userChoice == "scissors"):
         ++computerScore
-        return compWin(i);
+        ++roundCount
+        return compWin();
         break;
 
         case (computerChoice == "paper" && userChoice == "rock"):
         ++computerScore
-        return compWin(i);
+        ++roundCount
+        return compWin();
         break;
 
         case (computerChoice == "scissors") && userChoice == "paper":
         ++computerScore
-        return compWin(i);
+        ++roundCount
+        return compWin();
         break;
 
         case (computerChoice == userChoice):
         alert(`Draw, try again`);
-        --i
         return;
 
         default:
         ++userScore
-        return userWin(i);
+        ++roundCount
+        return userWin();
     }
 }
-//alert(`Refresh the page to play another round`);
